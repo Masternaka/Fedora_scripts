@@ -1,5 +1,6 @@
 ## 📝 Description
 
+
 Ce script Bash **automatise l'installation et la désinstallation** de logiciels sur Fedora. Il propose une interface interactive simple pour gérer vos applications préférées sans taper de commandes complexes.
 
 > 💡 **Astuce** : Modifiez les listes de paquets en début de script pour personnaliser vos installations.
