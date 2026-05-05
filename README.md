@@ -93,3 +93,16 @@ sudo ./flatpak_manager.sh update
 - Scripts en français avec interface intuitive
 - Configuration personnalisable via fichiers séparés
 - Gestion automatique des dépendances
+
+
+
+
+
+
+*********** À faire ************
+
+- RPM Fusion ajout des dépôts: rpmfusion-free-release-tainted rpmfusion-nonfree-release-tainted
+- Vérifier les codecs installer
+- Vérifier le script de virtualisation vs celui du dépôt Fork sur Github
+- Script pour l'optimisation de DNF
+- 
