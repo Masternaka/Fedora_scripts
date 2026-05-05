@@ -1,156 +1,120 @@
-# Installation QEMU et virt-manager pour Fedora 44
+# Installation QEMU et virt-manager — Fedora 44
 
-Ce dossier contient un script complet pour installer et configurer QEMU, virt-manager et tous les composants nécessaires pour la virtualisation sur Fedora 44.
+Ce dossier contient un script complet pour installer et configurer QEMU/KVM et virt-manager sur Fedora 44.
 
 ## Fichiers
 
-- `installation_qemu_virt_manager.sh` - Script d'installation et configuration complet
-- `README.md` - Ce fichier de documentation
+- `installation_qemu.sh` — Script d'installation et configuration
+- `README.md` — Ce fichier de documentation
 
 ## Fonctionnalités du script
 
-### Installation des paquets
-- Installation du groupe "Virtualization" de Fedora
-- Installation de QEMU KVM et des outils associés
-- Installation de virt-manager (interface graphique)
-- Installation des pilotes et firmwares nécessaires (OVMF, SeaBIOS)
-- Installation des outils de gestion et de diagnostic
+- Vérifie le support de la virtualisation matérielle (KVM/VMX)
+- Vérifie la version de Fedora
+- Installe le groupe "Virtualization" de Fedora + compléments utiles
+- Configure firewalld pour le réseau libvirt (zone trusted)
+- Ajoute l'utilisateur aux groupes `libvirt` et `kvm`
+- Active les services libvirt en mode monolithique (`libvirtd`)
+- Configure le réseau virtuel NAT par défaut
+- Vérifie l'installation et affiche un résumé
 
-### Configuration système
-- **Firewalld**: Configuration automatique des services libvirt, libvirt-tls, vnc-server, spice-server
-- **Groupes utilisateurs**: Ajout automatique de l'utilisateur aux groupes `libvirt` et `kvm`
-- **Services**: Démarrage et activation de tous les services libvirt nécessaires
-- **Réseaux**: Configuration du réseau virtuel par défaut (NAT 192.168.122.0/24)
+## Prérequis
 
-### Services configurés
-- `libvirtd` - Service principal de libvirt
-- `virtlogd` - Gestion des logs
-- `virtlockd` - Gestion des verrous
-- `virtstoraged` - Gestion du stockage
-- `virtqemud` - Support QEMU
-- `virt-networkd` - Gestion des réseaux virtuels
-- `virt-nwfilterd` - Filtres réseau
-- `virt-interfaced` - Interfaces réseau
-- `virt-proxyd` - Services proxy
-- `virt-secretd` - Gestion des secrets
+- Fedora 44
+- Virtualisation matérielle activée dans le BIOS/UEFI (VT-x pour Intel, AMD-V pour AMD)
+- Droits sudo
+- Connexion internet
 
 ## Utilisation
 
-### Prérequis
-- Fedora 44 (peut fonctionner sur d'autres versions avec adaptations)
-- Connexion internet
-- Droits sudo pour l'utilisateur
+```bash
+chmod +x installation_qemu.sh
+./installation_qemu.sh
+```
 
-### Installation
+> ⚠️ Ne pas lancer avec `sudo` — le script l'utilisera lui-même quand nécessaire.
 
-1. **Rendre le script exécutable:**
-   ```bash
-   chmod +x installation_qemu_virt_manager.sh
-   ```
+## Paquets installés
 
-2. **Exécuter le script:**
-   ```bash
-   ./installation_qemu_virt_manager.sh
-   ```
+### Via le groupe Fedora "Virtualization"
+Le groupe installe l'essentiel : `qemu-kvm`, `libvirt`, `virt-install`, `libvirt-client`.
 
-3. **Déconnexion et reconnexion:**
-   Après l'exécution du script, déconnectez-vous et reconnectez-vous pour que les changements de groupes prennent effet.
+### Compléments installés explicitement
 
-### Vérification de l'installation
+| Paquet | Utilité |
+|---|---|
+| `virt-manager` | Interface graphique de gestion des VMs |
+| `virt-viewer` | Affichage console/graphique des VMs |
+| `swtpm` + `swtpm-tools` | Émulation TPM (requis pour Windows 11) |
+| `libvirt-daemon-driver-swtpm` | Support TPM dans libvirt |
+| `edk2-ovmf` | Firmware UEFI pour les VMs |
+| `policycoreutils-python-utils` | Gestion des politiques SELinux |
 
-Après reconnexion, vérifiez que tout fonctionne correctement:
+### Paquets optionnels (commentés dans le script)
+
+| Paquet | Utilité |
+|---|---|
+| `libguestfs-tools` | Inspection et modification d'images disque |
+| `virt-top` | Monitoring des VMs en temps réel |
+| `python3-libvirt` | Bindings Python pour libvirt |
+| `bridge-utils` | Réseau bridgé (si vous ne voulez pas NAT) |
+
+## Après l'installation
+
+**⚠️ Déconnectez-vous et reconnectez-vous** pour activer les groupes `libvirt` et `kvm`.
 
 ```bash
-# Vérifier les services
-systemctl status libvirtd
+# Lancer virt-manager
+virt-manager
 
-# Vérifier les groupes
-groups $USER
+# Lister les VMs
+virsh list --all
 
 # Lister les réseaux virtuels
 virsh net-list --all
 
-# Lancer virt-manager
-virt-manager
+# Statut des services
+systemctl status libvirtd
 ```
 
-## Post-installation
+## Emplacements importants
 
-### Lancement de virt-manager
-```bash
-virt-manager
-```
-
-### Commandes utiles
-```bash
-# Lister les VMs
-virsh list --all
-
-# Gérer les réseaux
-virsh net-list --all
-virsh net-info default
-
-# Gérer le stockage
-virsh pool-list --all
-virsh pool-info default
-
-# Surveillance des VMs
-virt-top
-```
-
-### Emplacements importants
-- **Images VM**: `/var/lib/libvirt/images/`
-- **Configuration réseaux**: `/etc/libvirt/qemu/networks/`
-- **Logs**: `/var/log/libvirt/`
-- **Socket libvirt**: `/var/run/libvirt/libvirt-sock`
+| Chemin | Description |
+|---|---|
+| `/var/lib/libvirt/images/` | Images disque des VMs |
+| `/etc/libvirt/qemu/` | Fichiers de configuration des VMs |
+| `/etc/libvirt/qemu/networks/` | Configuration des réseaux virtuels |
+| `/var/log/libvirt/` | Logs libvirt |
 
 ## Dépannage
 
-### Problèmes courants
-
-1. **Permission denied lors de l'accès à libvirt**
-   - Vérifiez que vous êtes bien dans le groupe libvirt: `groups $USER`
-   - Déconnectez-vous et reconnectez-vous si nécessaire
-
-2. **Services ne démarrent pas**
-   ```bash
-   sudo systemctl status libvirtd
-   sudo journalctl -u libvirtd -f
-   ```
-
-3. **Réseau virtuel non fonctionnel**
-   ```bash
-   sudo virsh net-start default
-   sudo virsh net-autostart default
-   ```
-
-4. **Modules KVM non chargés**
-   ```bash
-   lsmod | grep kvm
-   sudo modprobe kvm
-   sudo modprobe kvm_intel  # ou kvm_amd
-   ```
-
-### Vérification du support matériel
+### Permission denied lors de l'accès à libvirt
 ```bash
-# Vérifier le support de la virtualisation matérielle
-egrep -c '(vmx|svm)' /proc/cpuinfo
-
-# Vérifier KVM
-ls -la /dev/kvm
+# Vérifier vos groupes (après reconnexion)
+groups $USER
 ```
 
-## Notes importantes
+### Services ne démarrent pas
+```bash
+sudo systemctl status libvirtd
+sudo journalctl -u libvirtd -f
+```
 
-- Le script doit être exécuté en tant qu'utilisateur normal (pas root), il utilisera sudo quand nécessaire
-- Un redémarrage peut être nécessaire après l'installation pour que tous les changements soient appliqués
-- Le script configure automatiquement firewalld pour autoriser les services de virtualisation
-- Le réseau par défaut utilise NAT avec la plage 192.168.122.0/24
+### Réseau virtuel non fonctionnel
+```bash
+sudo virsh net-start default
+sudo virsh net-autostart default
+```
 
-## Support
+### Modules KVM non chargés
+```bash
+lsmod | grep kvm
+sudo modprobe kvm_intel   # Intel
+sudo modprobe kvm_amd     # AMD
+```
 
-En cas de problème avec le script, vérifiez:
-1. Que vous êtes sur Fedora 44
-2. Que vous avez les droits sudo
-3. Que votre connexion internet fonctionne
-4. Les logs des services libvirt: `sudo journalctl -u libvirtd`
+### Vérifier le support matériel
+```bash
+grep -cE '(vmx|svm)' /proc/cpuinfo
+ls -la /dev/kvm
+```
