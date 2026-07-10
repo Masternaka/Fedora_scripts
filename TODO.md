@@ -1,0 +1,4 @@
+- [ ] 10 - install_dnf.sh: Il faut faire la modifiction pour que l'intallation des paquets soit fait pour les dépôts officiel, rpm fusion, terrarepo et copr.
+- [ ] 00 - super_script.sh: Adapter la liste des scripts (ordre, nom, etc) pour les nouveaux scripts fedora
+- [ ] Voir le script 11 install_thirdparty.sh pour vérifier la liste des logiciels installer et mettre la liste à jour. Ajouter Github Desktop, Sourcetree, Brave Origin.
+- [ ] Voir le script 11 install_thirdparty.sh et enlever l'installation de Openrgb.
