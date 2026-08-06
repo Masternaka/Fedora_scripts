@@ -3,3 +3,5 @@
 - [ ] Voir le script 11 install_thirdparty.sh pour vérifier la liste des logiciels installer et mettre la liste à jour. Ajouter Github Desktop, Gtikraken, Gityup, Sourcetree, Brave Origin.
 - [ ] Voir le script 11 install_thirdparty.sh et enlever l'installation de Openrgb.
 - [ ] Voir dans Obsidian pour les modifs à faire pour l'optimisation de Fedora.
+- [ ] Faire un script pour l'installation des extensions Gnome.
+- [ ] Faire l'exportation des settings des extensions Gnome et sauvegarder sur Github.
