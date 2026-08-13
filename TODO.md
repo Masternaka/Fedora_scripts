@@ -1,7 +1,5 @@
-- [ ] 10 - install_dnf.sh: Il faut faire la modifiction pour que l'intallation des paquets soit fait pour les dépôts officiel, rpm fusion, terrarepo et copr.
-- [ ] 00 - super_script.sh: Adapter la liste des scripts (ordre, nom, etc) pour les nouveaux scripts fedora
-- [ ] Voir le script 11 install_thirdparty.sh pour vérifier la liste des logiciels installer et mettre la liste à jour. Ajouter Github Desktop, Gtikraken, Gityup, Sourcetree, Brave Origin.
-- [ ] Voir le script 11 install_thirdparty.sh et enlever l'installation de Openrgb.
+- [ ] Voir dans le script install_thirdparty.sh pour voir si c'est possible d'installer certains de ces paquets avec les dépôts Copr ou Terra.
 - [ ] Voir dans Obsidian pour les modifs à faire pour l'optimisation de Fedora.
 - [ ] Faire un script pour l'installation des extensions Gnome.
 - [ ] Faire l'exportation des settings des extensions Gnome et sauvegarder sur Github.
+- [ ] Ajouter dépôt Copr adriend/fedora-apps

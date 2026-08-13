@@ -24,29 +24,49 @@ readonly C_ERR='\033[0;31m'
 
 # Paquets à installer depuis les dépôts Fedora officiels
 readonly PACKAGES=(
-    # Outils de base et système
+
+# Outils de base et système
 git
 curl
 wget
 firewall-config
+
+# Outils DNF
+dnf-utils
 
 # Utilitaires
 gnome-disk-utility
 gparted
 timeshift
 stow
+flameshot
+7zip
+unzip
+stow
+ranger
+yazi
 
 # Développement
 micro
 meld
+ShellCheck
+hx
+neovim
 
 # Virtualisation
 distrobox
 podman
+podman-tui
+podman-compose
 toolbox
+toolbox-extra-tools
 
 # Terminal
-kitty
+#kitty
+ptyxis
+guake
+starship
+foot
 
 # Monitoring & système
 btop
@@ -54,6 +74,7 @@ fastfetch
 lm_sensors
 lshw
 fwupd
+inxi
 
 # Administration système
 cockpit
@@ -73,12 +94,23 @@ keepassxc
 # Navigateur web, email et internet
 thunderbird
 qbittorrent
+transmission-gtk
 
 # Multimédia
 vlc
 mpv
 strawberry
 deadbeef
+
+# Office et notes
+libreoffice
+obsidian
+helix-notes
+
+# Langues
+libreoffice-l10n-fr
+firefox-l10n-fr
+thunderbird-l10n-fr 
 
 # Spécifiques à KDE
 #io-admin
@@ -87,6 +119,12 @@ deadbeef
 #rusader
 #akuake
 #olphin-plugins
+
+# Spécifiques à Gnome
+gnome-tweaks
+file-roller
+dconf-editor
+
 )
 
 DRY_RUN=0

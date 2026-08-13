@@ -82,26 +82,10 @@ install_virtualization_packages() {
     sudo dnf install -y \
         virt-manager \
         virt-viewer \
-        swtpm \
-        swtpm-tools \
-        libvirt-daemon-driver-swtpm \
-        edk2-ovmf \
-        policycoreutils-python-utils
-
-    # Explication des paquets installés :
-    # virt-manager -  # Interface graphique pour qemu-kvm
-    # virt-viewer -  # Visionneuse pour l'affichage graphique des machines virtuelles
-    # swtpm -  # Émulateur logiciel TPM (Trusted Platform Module)
-    # swtpm-tools -  # Outils pour l'émulateur TPM logiciel swtpm
-    # libvirt-daemon-driver-swtpm -  # Pilote démon libvirt pour swTPM
-    # edk2-ovmf -  # Firmware UEFI pour machines virtuelles (Open Virtual Machine Firmware)
-    # policycoreutils-python-utils  - Utilitaires Python pour la gestion des politiques SELinux
-
-    # Paquets optionnels (décommenter si besoin) :
-    # libguestfs-tools     — inspection et modification d'images disque
-    # virt-top             — monitoring des VMs en temps réel
-    # python3-libvirt      — bindings Python pour libvirt
-    # bridge-utils         — réseau bridgé (si vous ne voulez pas NAT)
+        policycoreutils-python-utils \
+        libguestfs-tools \
+        virt-top \
+        bridge-utils \
 
     print_success "Paquets de virtualisation installés."
 }

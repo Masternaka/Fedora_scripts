@@ -27,30 +27,14 @@ readonly PACKAGES=(
     gstreamer1-plugins-base
     gstreamer1-plugins-good
     gstreamer1-plugins-good-extras
-    gstreamer1-plugins-ugly
-    gstreamer1-plugins-ugly-free
     gstreamer1-plugins-bad-free
     gstreamer1-plugins-bad-free-extras
-    gstreamer1-plugins-bad-freeworld
+    gstreamer1-plugins-ugly
+    gstreamer1-plugins-ugly-free
     gstreamer1-plugin-openh264
-    gstreamer1-libav
-    faad2
-    flac
-    lame
-    libdvdread
-    libdvdnav
-    libaacs
-    x264
-    x265
-    xvid
-    libmp4v2
-    libvpx
-    opus
-    speex
-    mpg123
-    a52dec
-    libmad
+    gstreamer1-plugin-libav
     libdvdcss
+    gstreamer1-plugins-bad-freeworld
 )
 
 DRY_RUN=0

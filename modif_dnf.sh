@@ -1,0 +1,3 @@
+- Modification de DNF pour augmenter le nombre de téléchargements simultanés à 10.
+- Ajouter la fonction deltarpm=false dans le fichier de configuration de DNF pour désactiver l'utilisation des delta RPMs.
+- Changer la fonctione de vm.swappiness = 10 dans le fichier /etc/sysctl.conf pour réduire l'utilisation de la mémoire swap.

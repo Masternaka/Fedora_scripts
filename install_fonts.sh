@@ -17,7 +17,10 @@ fonts=(
     "JetBrainsMono"
     "CascadiaMono"
     "FiraCode"
+    "Hack"
+    "Iosevka"
     "Meslo"
+    "Noto" 
 )
 
 show_help() {
