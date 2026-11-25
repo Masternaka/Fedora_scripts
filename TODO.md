@@ -1,5 +1,0 @@
-- [ ] Voir dans le script install_thirdparty.sh pour voir si c'est possible d'installer certains de ces paquets avec les dépôts Copr ou Terra.
-- [ ] Voir dans Obsidian pour les modifs à faire pour l'optimisation de Fedora.
-- [ ] Faire un script pour l'installation des extensions Gnome.
-- [ ] Faire l'exportation des settings des extensions Gnome et sauvegarder sur Github.
-- [ ] Ajouter dépôt Copr adriend/fedora-apps

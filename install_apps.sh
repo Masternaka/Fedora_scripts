@@ -29,6 +29,7 @@ readonly PACKAGES=(
 git
 curl
 wget
+firewalld
 firewall-config
 
 # Outils DNF
@@ -62,11 +63,11 @@ toolbox
 toolbox-extra-tools
 
 # Terminal
-#kitty
-ptyxis
-guake
-starship
-foot
+kitty
+#ptyxis
+#guake
+#starship
+#foot
 
 # Monitoring & système
 btop
@@ -86,7 +87,7 @@ cockpit-system
 cockpit-ws
 cockpit-podman
 cockpit-machines
-#yumex
+yumex
 
 # Sécurité
 keepassxc
@@ -121,9 +122,9 @@ thunderbird-l10n-fr
 #olphin-plugins
 
 # Spécifiques à Gnome
-gnome-tweaks
-file-roller
-dconf-editor
+#gnome-tweaks
+#file-roller
+#dconf-editor
 
 )
 

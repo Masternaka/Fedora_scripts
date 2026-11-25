@@ -72,6 +72,17 @@ applications=(
 
     # Utilitaire de communication
     "dev.vencord.Vesktop:Vesktop"
+
+
+com.bitwarden.desktop
+com.discordapp.Discord
+md.obsidian.Obsidian
+it.mijorus.gearlever:Gearlever
+com.ktechpit.colorwall
+be.alexandervanhee.gradia
+com.github.unrud.VideoDownloader
+
+
 )
 
 # ─── Fonctions utilitaires ────────────────────────────────────────────────────

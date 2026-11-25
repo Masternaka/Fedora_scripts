@@ -43,3 +43,35 @@ PackageKit
     # Utilitaires
     gnome-user-docs
     yelp
+
+
+
+    # KDE Apps
+    
+# Applications multimédias par défaut
+kdenlive
+k3b
+dragon
+
+# Suite PIM KDE (mail, agenda, contacts)
+kmail
+korganizer
+kaddressbook
+akregator
+knotes
+
+# Jeux par défaut
+kpatience
+kmahjongg
+kmines
+
+# Outils réseau/bureau à distance KDE
+krfb
+krdc
+
+# Applications utilitaires par défaut
+konversation
+
+# Outils de développement KDE
+kdevelop
+qtcreator
